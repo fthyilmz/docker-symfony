@@ -1,6 +1,6 @@
 # Docker Symfony (PHP7-FPM OPcache - NGINX - MySQL - ELK - REDIS - VARNISH)
 
-[![Build Status](https://travis-ci.org/maxpou/docker-symfony.svg?branch=master)](https://travis-ci.org/maxpou/docker-symfony)
+[![Build Status](https://travis-ci.org/mediafigaro/docker-symfony.svg?branch=master)](https://travis-ci.org/mediafigaro/docker-symfony)
 
 ![](docker.png)
 
