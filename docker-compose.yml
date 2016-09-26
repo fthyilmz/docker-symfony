@@ -11,12 +11,12 @@ services:
             MYSQL_ROOT_PASSWORD: root
     redis:
         image: redis:alpine
-        ports:
-            - 6379:6379
+        expose:
+            - 6379
     php:
         build: php7-fpm
-        ports:
-            - 9000:9000
+        expose:
+            - 9000
         links:
             - db:mysqldb
             - redis
