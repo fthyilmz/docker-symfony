@@ -21,13 +21,9 @@ services:
             - db:mysqldb
             - redis
         volumes:
-            - ../data-storage-interface:/var/www/symfony_data-storage-interface
-            - ../stock:/var/www/symfony_stock
-            - ../front:/var/www/symfony_front
-            - ../image-processing:/var/www/symfony_image-processing
-            - ../platform:/var/www/symfony_platform
-            - ../analytics:/var/www/symfony_analytics
-            - ../data-storage:/var/www/symfony_data-storage
+            - ../project1:/var/www/symfony_project1
+            - ../project2:/var/www/symfony_project2
+            - ../project3:/var/www/symfony_project3
             - ./logs/symfony:/var/www/symfony/app/logs
     nginx:
         build: nginx
