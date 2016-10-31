@@ -14,7 +14,8 @@ services:
         expose:
             - 6379
     php:
-        build: php7-fpm
+        image: mediafigaro/docker-php7-fpm #image or build
+        #build: php7-fpm
         expose:
             - 9000
         links:
