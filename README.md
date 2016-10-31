@@ -164,6 +164,8 @@ alias dkup='docker-compose up -d'
 alias dkbuild='docker-compose build'
 alias dks='docker ps'
 alias dkrm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias dkd='docker-compose down'
+alias dkp='lsof -i -n -P | grep com.doc'
 ```
 
 ## How it works?
@@ -234,6 +236,10 @@ $ docker rmi $(docker images -q)
 If you need to display the latest Git commits into the Symfony debug bar and link them to your code repository you can use this [bundle](https://github.com/kendrick-k/symfony-debug-toolbar-git).
 
 ## FAQ
+
+* Docker for Mac issue : port is already allocated (without even running containers) : 
+docker-compose down & restart docker and eventually check ports : lsof -i tcp:PORTNUMBER or lsof -i -n -P | grep com.doc 
+https://github.com/docker/for-mac/issues/205
 
 * Got this error: `ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is it running?
 If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.` ?  
