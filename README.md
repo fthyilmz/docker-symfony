@@ -25,13 +25,13 @@ Docker-symfony gives you everything you need for developing Symfony application.
     $ docker-compose up -d
     ```
 
-3. Update your system host file (add symfony.dev)
+3. Update your system host file (add symfony.sf)
 
     ```bash
     # get containers IP address and update host (replace IP according to your configuration)
     $ docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -f name=nginx -q)
     # unix only (on Windows, edit C:\Windows\System32\drivers\etc\hosts)
-    $ sudo echo "171.17.0.1 symfony.dev" >> /etc/hosts
+    $ sudo echo "171.17.0.1 symfony.sf" >> /etc/hosts
     ```
 
     **Note:** If it's empty, run `docker inspect $(docker ps -f name=nginx -q) | grep IPAddress` instead.
@@ -76,12 +76,12 @@ Docker-symfony gives you everything you need for developing Symfony application.
 
 Just run `docker-compose -d`, then:
 
-* Symfony app: visit [symfony.dev](http://symfony.dev)
-* Symfony app through [Varnish](https://varnish-cache.org/): visit [symfony.dev:81](http://symfony.dev:81)  
-* Symfony dev mode: visit [symfony.dev/app_dev.php](http://symfony.dev/app_dev.php)  
-* Logs (Kibana): [symfony.dev:8081](http://symfony.dev:8081)
+* Symfony app: visit [symfony.sf](http://symfony.sf)
+* Symfony app through [Varnish](https://varnish-cache.org/): visit [symfony.sf:81](http://symfony.sf:81)  
+* Symfony dev mode: visit [symfony.sf/app_dev.php](http://symfony.sf/app_dev.php)  
+* Logs (Kibana): [symfony.sf:8081](http://symfony.sf:8081)
 * Logs (files location): logs/nginx and logs/symfony
-* PHPMyAdmin : [symfony.dev:8080](http://symfony.dev:8080)
+* PHPMyAdmin : [symfony.sf:8080](http://symfony.sf:8080)
 
 ## Multiple applications running on this stack for a [Service Oriented Architecture (SOA)](https://en.wikipedia.org/wiki/Service-oriented_architecture) application
 
@@ -90,7 +90,7 @@ If you want to use this docker configuration to run multiple Symfony application
 * add the needed hosts to your local /etc/hosts
     
 ```bash
-127.0.0.1   localhost project1.sf project2.sf project3.sf
+127.0.0.1   localhost symfony.sf project1.sf project2.sf project3.sf
 ```
 
 * mount the volumes into docker-compose.yml
@@ -150,7 +150,7 @@ result :
 },
 ```
 
-Urls for CouchDB : http://localhost:8082/, http://localhost:8082/_utils/ & http://localhost:8082/_utils/fauxton/.
+Urls for CouchDB : [localhost:8082](http://localhost:8080), [localhost:8082/_utils/](http://localhost:8080/_utils/), [localhost:8082/_utils/fauxton/](http://localhost:8080/_utils/fauxton/)
 
 You can use [Kinematic](https://kitematic.com/) UI for Docker.
 
