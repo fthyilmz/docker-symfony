@@ -20,9 +20,9 @@ Docker-symfony gives you everything you need for developing Symfony application.
 2. Build/run containers with (with and without detached mode)
 
     ```bash
-    $ docker-compose build
-    $ docker-compose up
-    $ docker-compose up -d
+    docker-compose build
+    docker-compose up
+    docker-compose up -d
     ```
 
 3. Update your system host file (add symfony.sf)
@@ -42,8 +42,8 @@ Docker-symfony gives you everything you need for developing Symfony application.
     1. Retrieve DB&Redis IP
 
         ```bash
-        $ docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=db -q)
-        $ docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=redis -q)
+        docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=db -q)
+        docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=redis -q)
         ```
 
         **Note:** If it's empty, run `docker inspect $(docker ps -f name=db -q) | grep IPAddress` instead.
