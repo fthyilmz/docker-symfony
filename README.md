@@ -166,6 +166,7 @@ alias dks='docker ps'
 alias dkrm='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias dkd='docker-compose down'
 alias dkp='lsof -i -n -P | grep com.doc'
+alias dkin='alias dkin='docker-compose exec php bash'
 ```
 
 ## How it works?
