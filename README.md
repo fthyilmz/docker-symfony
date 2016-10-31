@@ -29,9 +29,11 @@ Docker-symfony gives you everything you need for developing Symfony application.
 
     ```bash
     # get containers IP address and update host (replace IP according to your configuration)
-    $ docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -f name=nginx -q)
+    docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -f name=nginx -q)
     # unix only (on Windows, edit C:\Windows\System32\drivers\etc\hosts)
-    $ sudo echo "171.17.0.1 symfony.sf" >> /etc/hosts
+    sudo echo "171.17.0.1 symfony.sf" >> /etc/hosts
+    # on MAC with Docker for Mac, 127.0.0.1 can be used
+    sudo echo "127.0.0.1 symfony.sf" >> /etc/hosts
     ```
 
     **Note:** If it's empty, run `docker inspect $(docker ps -f name=nginx -q) | grep IPAddress` instead.
@@ -60,16 +62,16 @@ Docker-symfony gives you everything you need for developing Symfony application.
     3. Composer install & create database
 
         ```bash
-        $ docker-compose exec php bash
-        $ composer install
+        docker-compose exec php bash
+        composer install
         # Symfony2
-        $ sf2 doctrine:database:create
-        $ sf2 doctrine:schema:update --force
-        $ sf2 doctrine:fixtures:load --no-interaction
+        sf2 doctrine:database:create
+        sf2 doctrine:schema:update --force
+        sf2 doctrine:fixtures:load --no-interaction
         # Symfony3
-        $ sf doctrine:database:create
-        $ sf doctrine:schema:update --force
-        $ sf doctrine:fixtures:load --no-interaction
+        sf doctrine:database:create
+        sf doctrine:schema:update --force
+        sf doctrine:fixtures:load --no-interaction
         ```
 
 ## Usage
@@ -200,36 +202,36 @@ dockersymfony_varnish_1      start-varnishd                   Up      80/tcp, 0.
 
 ```bash
 # bash commands
-$ docker-compose exec php bash
+docker-compose exec php bash
 
 # Composer (e.g. composer update)
-$ docker-compose exec php composer update
+docker-compose exec php composer update
 
 # SF commands (Tips: there is an alias inside php container)
-$ docker-compose exec php php /var/www/symfony/app/console cache:clear # Symfony2
-$ docker-compose exec php php /var/www/symfony/bin/console cache:clear # Symfony3
+docker-compose exec php php /var/www/symfony/app/console cache:clear # Symfony2
+docker-compose exec php php /var/www/symfony/bin/console cache:clear # Symfony3
 # Same command by using alias
-$ docker-compose exec php bash
-$ sf cache:clear
+docker-compose exec php bash
+sf cache:clear
 
 # MySQL commands
-$ docker-compose exec db mysql -uroot -p"root"
+docker-compose exec db mysql -uroot -p"root"
 
 # Redis commands
-$ docker-compose exec redis redis-cli
+docker-compose exec redis redis-cli
 
 # Cache/logs folder
-$ sudo chmod -R 777 app/cache app/logs # Symfony2
-$ sudo chmod -R 777 var/cache var/logs # Symfony3
+sudo chmod -R 777 app/cache app/logs # Symfony2
+sudo chmod -R 777 var/cache var/logs # Symfony3
 
 # Check CPU consumption
-$ docker stats $(docker inspect -f "{{ .Name }}" $(docker ps -q))
+docker stats $(docker inspect -f "{{ .Name }}" $(docker ps -q))
 
 # Delete all containers
-$ docker rm $(docker ps -aq)
+docker rm $(docker ps -aq)
 
 # Delete all images
-$ docker rmi $(docker images -q)
+docker rmi $(docker images -q)
 ```
 
 ## Commits
