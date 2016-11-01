@@ -30,23 +30,23 @@ Docker-symfony gives you everything you need for developing Symfony application.
     ```bash
     # get containers IP address and update host (replace IP according to your configuration)
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -f name=nginx -q)
+    # or, if empty :
+    docker inspect $(docker ps -f name=nginx -q) | grep IPAddress
     # unix only (on Windows, edit C:\Windows\System32\drivers\etc\hosts)
     sudo echo "171.17.0.1 symfony.sf" >> /etc/hosts
     # on MAC with Docker for Mac, 127.0.0.1 can be used
     sudo echo "127.0.0.1 symfony.sf" >> /etc/hosts
     ```
-
-    **Note:** If it's empty, run `docker inspect $(docker ps -f name=nginx -q) | grep IPAddress` instead.
-
+    
 4. Prepare Symfony app
-    1. Retrieve DB&Redis IP
+    1. Retrieve mysql & redis IP
 
         ```bash
         docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=db -q)
         docker inspect --format '{{ .NetworkSettings.Networks.dockersymfony_default.IPAddress }}' $(docker ps -f name=redis -q)
+        # or, if empty :
+        docker inspect $(docker ps -f name=db -q) | grep IPAddress
         ```
-
-        **Note:** If it's empty, run `docker inspect $(docker ps -f name=db -q) | grep IPAddress` instead.
 
     2. Update app/config/parameters.yml
 
