@@ -250,3 +250,4 @@ Run `docker-compose up -d` instead.
 
 * Permission problem? See [this doc (Setting up Permission)](http://symfony.com/doc/current/book/installation.html#checking-symfony-application-configuration-and-setup)
 
+* [PHP7-FPM Docker image](https://hub.docker.com/u/mediafigaro/)
