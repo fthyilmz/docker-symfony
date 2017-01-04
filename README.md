@@ -85,6 +85,25 @@ Just run `docker-compose -d`, then:
 * Logs (files location): logs/nginx and logs/symfony
 * PHPMyAdmin : [symfony.sf:8080](http://symfony.sf:8080)
 
+## Application cache
+
+You should [disable the Symfony cache](http://symfony.com/doc/current/debug/debugging.html) for development and debugging purposes by removing the loadClassCache method to AppKernel into the app_dev.php file :
+
+```bash
+/**
+ * @var Composer\Autoload\ClassLoader $loader
+ */
+$loader = require __DIR__.'/../app/autoload.php';
+Debug::enable();
+
+$kernel = new AppKernel('dev', true);
+//$kernel->loadClassCache();    // remove class cache
+$request = Request::createFromGlobals();
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);
+```
+
 ## Multiple applications running on this stack for a [Service Oriented Architecture (SOA)](https://en.wikipedia.org/wiki/Service-oriented_architecture) application
 
 If you want to use this docker configuration to run multiple Symfony applications - ex : project{1,2,3} - follow those steps :
