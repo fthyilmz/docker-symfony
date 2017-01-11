@@ -104,6 +104,13 @@ $response->send();
 $kernel->terminate($request, $response);
 ```
 
+And remove twig cache into config_dev.yml :
+
+```bash
+twig:
+    cache: false
+```
+
 ## Multiple applications running on this stack for a [Service Oriented Architecture (SOA)](https://en.wikipedia.org/wiki/Service-oriented_architecture) application
 
 If you want to use this docker configuration to run multiple Symfony applications - ex : project{1,2,3} - follow those steps :
