@@ -23,16 +23,12 @@ services:
             - redis
         volumes:
             - ../project1:/var/www/symfony_project1
-            - ../project2:/var/www/symfony_project2
-            - ../project3:/var/www/symfony_project3
-            - ./logs/symfony:/var/www/symfony/app/logs
     nginx:
         build: nginx
         ports:
             - 80:80
         links:
             - php
-            - varnish
         volumes_from:
             - php
         volumes:
@@ -53,14 +49,3 @@ services:
             - 8080:80
         links:
             - db
-    varnish:
-        build: varnish/
-        environment:
-            VARNISH_PORT: 8081
-            VARNISH_MEMORY: 200M
-        ports:
-            - 81:8081
-    couchdb:
-        image: couchdb
-        ports:
-            - 8082:5984
